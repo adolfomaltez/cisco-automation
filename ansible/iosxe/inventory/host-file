@@ -1,0 +1,4 @@
+[iosxes]
+iosxe1 ansible_host=192.168.10.121
+iosxe2 ansible_host=192.168.10.122
+

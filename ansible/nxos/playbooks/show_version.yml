@@ -1,0 +1,15 @@
+---
+
+- name: Cisco NX-OS show version example
+  hosts: nxoss
+  gather_facts: false
+
+  tasks:
+    - name: run show version example
+      cisco.nxos.nxos_command:
+        commands: show version
+      register: output
+
+    - name: print output
+      debug:
+        var: output.stdout_lines

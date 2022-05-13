@@ -1,0 +1,17 @@
+---
+
+- name: Cisco show version example
+  hosts: asas
+  gather_facts: false
+
+  tasks:
+    - name: run show version example
+      asa_command:
+        commands: 
+          - show version
+      register: output
+
+    - name: print output
+      debug:
+        var: output.stdout_lines
+

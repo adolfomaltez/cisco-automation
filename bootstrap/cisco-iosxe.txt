@@ -1,0 +1,21 @@
+# Cisco IOSXE ansible bootstrap
+
+ena
+configure terminal
+username admin priv 15 secret cisco123
+hostname iosxe1
+ip domain name cisco.com
+crypto key generate rsa
+1024
+
+interface gigabitethernet 1
+ip address 192.168.10.121 255.255.255.0
+no shutdown
+exit
+ip ssh version 2
+line vty 0 15
+transport input ssh
+login local
+exit
+enable secret cisco123
+exit

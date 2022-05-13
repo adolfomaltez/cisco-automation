@@ -1,0 +1,11 @@
+# Debian 11 on WSL client bootstrap
+
+# sudo apt-get update
+# sudo apt-get install -y ansible
+# ansible --version
+# ansible-galaxy collection install cisco.asa cisco.ios cisco.nxos
+
+
+
+# Test SSH connection
+ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -c aes256-cbc -ladmin 192.168.10.111

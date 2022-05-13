@@ -1,0 +1,25 @@
+# Cisco ASA Ansible bootstrap
+
+
+# Configure IP
+
+ena
+configure terminal
+hostname asa1
+interface Management 0/0
+nameif MGT
+security-level 100
+ip address 192.168.10.111 255.255.255.0
+management-only
+shutdown
+no shutdown
+exit
+
+# Configure SSH
+
+crypto key generate rsa modulus 4096
+write memory
+username admin password cisco123 privilege 15
+aaa authentication ssh console LOCAL
+ssh 192.168.10.0 255.255.255.0 MGT
+enable passwrod cisco123

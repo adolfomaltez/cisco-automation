@@ -1,0 +1,19 @@
+---
+
+- name: Cisco ASA show interfaces
+  hosts: asas
+  gather_facts: false
+  connection: network_cli
+  become: yes
+
+  tasks:
+    - name: Cisco ASA show interfaces
+      asa_command:
+        commands:
+          - show interface ip brief
+      register: output
+
+    - name: print output
+      debug:
+        var: output.stdout_lines
+

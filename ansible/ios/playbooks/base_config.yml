@@ -1,0 +1,31 @@
+---
+
+- name: Cisco IOS Basic Configuration
+  hosts: ioss
+  gather_facts: false
+  no_log: true
+
+  tasks:
+
+    - name: Configure hostname
+      cisco.ios.ios_hostname:
+        config:
+          hostname: r1 
+        state: overridden
+
+    - name: Config local users/passwords
+      cisco.ios.ios_user:
+        name: admin 
+        configured_password: 'cisco123'
+        password_type: secret 
+        privilege: 15
+        state: present
+
+    - name: Configure the motd banner
+      cisco.ios.ios_banner:
+        banner: motd
+        text: |
+          *****************************************************************
+          *                !!! Welcome to CiscoLand !!!                   *
+          *****************************************************************
+        state: present

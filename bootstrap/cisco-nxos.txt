@@ -1,0 +1,16 @@
+# Cisco NXOS ansible bootstrap
+
+conf terminal
+hostname nxos1
+username admin password cisco123
+no feature ssh
+ssh key rsa 2048 force
+feature ssh
+
+interface mgmt 0
+ip address 192.168.10.131 255.255.255.0
+no shutdown
+exit
+
+feature nxapi
+exit
